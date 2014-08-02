@@ -5,7 +5,7 @@ heat-specs
 Specs for Heat
 
 * Free software: Apache license
-* Documentation: http://docs.openstack.org/developer/heat-specs
+* Documentation: http://specs.openstack.org/openstack/heat-specs
 
 Features
 --------
