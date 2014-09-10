@@ -16,7 +16,6 @@ heat-specs Repository Information
 
    README <readme>
    contributing
-   Sample Template <specs/template>
 
 
 Indices and tables
