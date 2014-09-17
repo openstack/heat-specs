@@ -6,6 +6,7 @@ heat-specs Design Specifications
    :maxdepth: 3
 
    specs/juno/*
+   specs/kilo/*
 
 
 heat-specs Repository Information
