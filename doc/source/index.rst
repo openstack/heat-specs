@@ -3,9 +3,9 @@ heat-specs Design Specifications
 
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :maxdepth: 3
 
-   specs/*
+   specs/juno/*
 
 
 heat-specs Repository Information
