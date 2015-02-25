@@ -33,7 +33,7 @@ Proposed change
 Add the following extra fields to the Stack table:
 
 - `prev_raw_template` (a RawTemplate key)
-- `current_traversal` (an integer that gets incremented on each update)
+- `current_traversal` (a UUID that gets changed on each update)
 - `current_deps` (a list of edges in the dependency graph, stored as JSON)
 
 We also need to ensure that modifications to the Stack table are atomic with

@@ -42,10 +42,11 @@ of the resources in reverse dependency order to clean them up where neccessary.
 Clean-up operations on a resource must always happen after any update operation
 on the same resource.
 
-Finally, increment the traversal ID and create a SyncPoint for each node in the
-graph with this traversal ID. It should also create a SyncPoint for the stack
-itself, which will be used to indicate when the update portion of the traversal
-is complete, at which time the stack status can be updated.
+Finally, replace the traversal ID with a new UUID and create a SyncPoint for
+each node in the graph with this traversal ID. It should also create a
+SyncPoint for the stack itself, which will be used to indicate when the update
+portion of the traversal is complete, at which time the stack status can be
+updated.
 
 This code should largely follow the prototype in
 https://github.com/zaneb/heat-convergence-prototype/blob/resumable/converge/stack.py
