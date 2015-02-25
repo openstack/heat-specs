@@ -8,7 +8,7 @@
 "repeat" function for HOT templates
 ===================================
 
-https://blueprints.launchpad.net/heat/+spec/for-each-function
+https://blueprints.launchpad.net/heat/+spec/repeat-function
 
 This specification introduces a "repeat" control structure for HOT
 templates.
