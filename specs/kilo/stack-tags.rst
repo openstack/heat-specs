@@ -12,8 +12,9 @@
 
 https://blueprints.launchpad.net/heat/+spec/stack-tags
 
-This feature will allow attributing a set of key:value tags to stacks and
-optionally the ability to hide stacks with certain tags by default.
+This feature will allow attributing a set of simple string-based tags
+to stacks and optionally the ability to hide stacks with certain tags
+by default.
 
 Problem description
 ===================
@@ -50,9 +51,9 @@ Add a "tag" flag to the stack-create API, which, if given, will create the
 stack with such tags.  Also add a configuration option that will allow
 operators to hide specific tags from the default stack list.
 
-Add a "show_all" flag to the stack-list API, which, if passed, will result
-in listing both hidden and non-hidden stacks.  By default, only non-hidden
-stacks will be displayed in the stack-list output.
+Add a "show_hidden" flag to the stack-list API, which, if passed, will
+result in listing both hidden and non-hidden stacks.  By default, only
+non-hidden stacks will be displayed in the stack-list output.
 
 Alternatives
 ------------
@@ -72,25 +73,53 @@ Milestones
 ----------
 
 Target Milestone for completion:
-  Kilo-2
+  Kilo-3
 
 Work Items
 ----------
 
-- Add a "tags" column to the "stack" database table.
+- Add a "stack_tag" table.
 
-- Add multiple "tag" parameters to stack-create (engine and API).
+- Add a "tags" parameter to stack-create (engine and API).  Note: Tag
+  names must not contain a comma, as specified in the spec:
+  https://review.openstack.org/#/c/155620/
 
-- Add a "show_all" parameter to stack-list in engine (engine and API).
+- Add ability to update stack tags during stack-update (engine and
+  API).  It should be possible to remove all tags from a stack.
+
+- Add a "show_hidden" parameter to stack-list in engine (engine and
+  API).
 
 - Add a "tags" parameter to stack-list in engine (engine and API).
   Passing a tag name will result in only stacks containing that tag
-  being shown.
+  being shown.  If multiple tags are passed, they will be combined
+  using the AND boolean expression.
+
+- Add a "tags-any" parameter to stack-list in engine (engine and API).
+  Passing a tag name will result in only stacks containing that tag
+  being shown.  If multiple tags are passed, they will be combined
+  using the OR boolean expression.
+
+- Add a "not-tags" parameter to stack-list in engine (engine and API).
+  Passing a tag name will result in only stacks NOT containing that
+  tag being shown.  If multiple tags are passed, they will be combined
+  using the AND boolean expression.
+
+- Add a "not-tags-any" parameter to stack-list in engine (engine and
+  API).  Passing a tag name will result in only stacks NOT containing
+  that tag being shown.  If multiple tags are passed, they will be
+  combined using the OR boolean expression.
+
+- Add an API to list tags, ie. "heat tag-list" (engine and API).
+
+- Ensure tags show up in the "heat stack-show <stack>" output (engine
+  and API).
 
 - Add docs for new API parameters to "api-site" project.
 
-- Write unit tests to ensure that other stack operations continue to work as
-  expected with hidden stacks, eg. stack-show, resource-list...
+- Write unit tests to ensure that other stack operations continue to
+  work as expected with hidden stacks, eg. stack-show, resource-list,
+  stack-list pagination...
 
 - Register a configuration parameter that contains a list of tags to
   hide by default.
@@ -98,10 +127,10 @@ Work Items
 - Implement changes to the DB/service/RPC to hide stacks according to
   the configuration parameter.
 
-- Add "show_all" parameter to stack-list in python-heatclient.
+- Add "show_hidden" parameter to stack-list in python-heatclient.
 
-- Add "tags" parameter to filter stack-list output by tag in
-  python-heatclient.
+- Add "--tags", "--tags-any", "--not-tags", and "--not-tags-any"
+  options to filter stack-list output by tag in python-heatclient.
 
 Dependencies
 ============
