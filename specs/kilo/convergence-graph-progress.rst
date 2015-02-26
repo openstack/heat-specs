@@ -35,7 +35,7 @@ Add a new table, `SyncPoint`, to the database with the following rows:
 
 - `resource_id` (a Resource key)
 - `is_update` (Boolean - True for update, False for cleanup)
-- `traversal_id` (Integer)
+- `traversal_id` (UUID)
 - `stack_id` (a Stack key)
 - `input_data` (JSON data)
 
