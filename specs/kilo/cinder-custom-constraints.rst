@@ -17,7 +17,7 @@
  Support Cinder Custom Constraints
 ===================================
 
-https://blueprints.launchpad.net/heat/+spec/support-cinder-custom-constraints
+https://blueprints.launchpad.net/heat/+spec/cinder-custom-constraints
 
 Support Cinder Custom Constraints, and apply them to related resources.
 
