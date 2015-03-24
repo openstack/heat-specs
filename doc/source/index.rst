@@ -7,6 +7,7 @@ heat-specs Design Specifications
 
    specs/juno/*
    specs/kilo/*
+   specs/liberty/*
 
 
 heat-specs Repository Information
