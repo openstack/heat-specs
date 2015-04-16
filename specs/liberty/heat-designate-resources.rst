@@ -26,8 +26,8 @@ Proposed change
 ===============
 
 Designate service provides v1 and v2 APIs[1] and it's python client[2]
-provides support only for v1. So in this blueprint, v1 support is added as
-contrib resources as follows.
+provides support only for v1. So in this blueprint, v1 support is added
+with following resources.
 
 * OS::Designate::Domain
 
