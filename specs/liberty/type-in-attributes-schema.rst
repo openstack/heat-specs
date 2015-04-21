@@ -24,9 +24,9 @@ attributes also becomes a issue without the knowledge of the attribute type.
 Proposed change
 ===============
 
-The changes will be made in each resource plugin to add type field in the attribute
-schema. Type can be a String, Map or List. This will also generate the docs telling
-the users what type of value to expect from get_attr.
+The changes will be made in each resource plugin to add type field in the
+attribute schema. Type can be a String, Map or List. This will also generate
+the docs telling the users what type of value to expect from get_attr.
 
 Alternatives
 ------------

@@ -11,14 +11,16 @@
 
 https://blueprints.launchpad.net/heat/+spec/support-to-generate-hot-templates
 
-This Blueprint will support to generate hot templates based on the specified type.
+This Blueprint will support to generate hot templates based on the specified
+type.
 
 Problem description
 ===================
 
-Currently Heat only supports to generate the 'HeatTemplateFormatVersion' template
-based on the specified resource type, this is the functionality exposed via the
-'heat resource-type-template' command. And the link of the API:
+Currently Heat only supports to generate the 'HeatTemplateFormatVersion'
+template based on the specified resource type, this is the functionality
+exposed via the 'heat resource-type-template' command. And the link of the
+API:
 
 http://developer.openstack.org/api-ref-orchestration-v1.html
 
