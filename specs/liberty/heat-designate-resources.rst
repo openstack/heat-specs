@@ -39,7 +39,7 @@ with following resources.
         - update_allowed: True
         - description: Domain name
     * ttl:
-        - required: True
+        - required: False
         - type: int
         - update_allowed: True
         - description: Time To Live (Seconds)
@@ -49,7 +49,7 @@ with following resources.
         - update_allowed: True
         - description: Description of domain
     * email:
-        - required: False
+        - required: True
         - type: String
         - update_allowed: True
         - description: Domain email
