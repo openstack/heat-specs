@@ -155,7 +155,7 @@ alarm, otherwise, the existing notification for that webhook will be used.
         - update_allowed: true
         - List item constrains: Webhook URL
 
-* All of these resource plugins will be supported from version '2015.2'
+* All of these resource plugins will be supported from version '5.0.0'
 
 Alternatives
 ------------
