@@ -16,11 +16,25 @@ all attributes.
 Problem description
 ===================
 
-There are resources which have attribute *show* which returns result of command
-:code:`<client> <resource name>-show`, but in some cases may be useful to get
-dict of all resource's attributes, so there was decision to add some new
-functionality for ``get_attr`` intrinsic function which allows to return dict
-of all attributes.
+Current implementation of base attribute "show" returns JSON
+representation of resource. Content of this representation depends on
+particular resource. This output is also used in native clients for building
+output of command :code:`<client> <resource name>-show`.
+
+Historically some Heat resources have attributes schema with attributes
+taken from the output mentioned above. However it doesn't mean,
+that all attributes in schema are presented in "show" output.
+It's mostly related to dynamic attributes and custom attributes,
+which require additional calculations, e.g. "addresses" attribute
+of OS::Nova::Server that also contains related port id in output.
+
+From the other side Heat also have resources with empty attribute schema,
+so only "show" attribute is available for them.
+
+In some cases to avoid using several outputs in template it will be useful
+to return all attributes from attribute schema
+(excluding the base attribute "show") in one output.
+This functionality should be added for ``get_attr`` intrinsic function.
 
 Proposed change
 ===============
