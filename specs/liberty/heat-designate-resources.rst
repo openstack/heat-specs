@@ -36,7 +36,7 @@ with following resources.
     * name:
         - required: True
         - type: String
-        - update_allowed: True
+        - update_allowed: False
         - description: Domain name
     * ttl:
         - required: False
@@ -73,22 +73,23 @@ Properties:
 
 Properties:
 
-    * domain_id:
+    * domain:
         - required: True
         - type: String
-        - update_allowed: True
-        - description: DNS Domain id
+        - update_allowed: False
+        - description: DNS Domain id or name
+        - constraints: CustomConstrain('designate.domain')
     * name:
         - required: True
         - type: String
-        - update_allowed: True
+        - update_allowed: False
         - description: DNS Name
-        - constrains: CustomConstrain('designate.domain')
     * type:
         - required: True
         - type: String
         - update_allowed: True
         - description: DNS record type
+        - constraints:[A, AAAA, CNAME, MX, SRV, TXT, SPF, NS, PTR, SSHFP, SOA]
     * data:
         - required: True
         - type: String
