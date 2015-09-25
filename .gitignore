@@ -3,3 +3,5 @@ doc/build/
 .tox/
 *.pyc
 .testrepository
+AUTHORS
+ChangeLog
