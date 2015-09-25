@@ -6,9 +6,9 @@
 
 ..
 
-====================================================
- Allow validation and inspection of nested resources
-====================================================
+===================================================
+Allow validation and inspection of nested resources
+===================================================
 
 https://blueprints.launchpad.net/heat/+spec/nested-validation
 
@@ -126,37 +126,82 @@ parameters).
 
 Then, we need to expose additional parameter information, other than what is
 currently exposed (parent template parameters only), this could be done via a
-new --show-nested option
+new --show-nested (-n) option::
 
-heat template-validate -f parent.yaml -e env.yaml --show-nested
+  heat template-validate -f parent.yaml -e env.yaml --show-nested
+
+Below is a sample output when run on a group of templates with the following
+properties:
+
+* The parent template contains a single resource named ``level-1-resource``
+  of type ``demo::Level1``
+* The ``parent-p1`` parameter is defined by the parent template
+* The ``demo::Level1`` template contains a parameter that must be specified
+  by the parent and one that has a default. The latter is meant to represent
+  the type of value that is specified as a ``parameter_default``.
+* The ``level-1-resource`` resource contains a resource named
+  ``level-2-resource`` of type ``demo::Level2``.
+* Similarly, the ``demo::Level2`` template defines a non-defaulted parameter
+  that must be specified by the parent and one that may optionally be
+  overridden through ``parameter_defaults``.
 
 .. code-block:: json
 
-  {
-    "Description": "The Parent",
-    "Parameters": {
-      "AParentParam": {
-        "Type": "String",
-        "NoEcho": "false",
-        "Description": "",
-        "Label": "AParentParam"
-      }
-    }
-   "NestedParameters": {
-      "OS::TripleO::ControllerExtraConfigPre": {
+    {
+      "Description": "parent template",
+      "Parameters": {
+        "parent-p1": {
+          "Type": "String",
+          "NoEcho": "false",
+          "Description": "parent first parameter",
+          "Label": "parent-p1"
+        }
+      },
+      "NestedParameters": {
+        "level-1-resource": {
+          "Type": "demo::Level1",
+          "Description": "level 1 nested template",
           "Parameters": {
-            "SomeExtraParam": {
-            "Default": "bar",
-            "Value": "extra foo",
-            "Type": "String",
-            "NoEcho": "false",
-            "Description": "",
-            "Label": "Child ExtraConfig"
+            "level-1-p1": {
+              "Type": "String",
+              "NoEcho": "false",
+              "Description": "set by parent; should have a Value field",
+              "Value": "parent-set-value-1",
+              "Label": "level-1-p1"
+            },
+            "level-1-p2-optional": {
+              "Default": "",
+              "Type": "String",
+              "NoEcho": "false",
+              "Description": "not set by parent",
+              "Label": "level-1-p2-optional"
+            }
+          },
+          "NestedParameters": {
+            "level-2-resource": {
+              "Type": "demo::Level2",
+              "Description": "level 2 nested template",
+              "Parameters": {
+                "level-2-p2-optional": {
+                  "Default": "",
+                  "Type": "String",
+                  "NoEcho": "false",
+                  "Description": "not set by parent",
+                  "Label": "level-2-p2-optional"
+                },
+                "level-2-p1": {
+                  "Type": "String",
+                  "NoEcho": "false",
+                  "Description": "set by parent; should have a Value field",
+                  "Value": "level-1-set-value",
+                  "Label": "level-2-p1"
+                }
+              }
             }
           }
-       }
+        }
+      }
     }
-  }
 
 Here we would return a new "NestedParameters" section, (potentially to
 multiple levels of nesting), reflecting the parameters validation at each
@@ -165,11 +210,11 @@ of each child template, which may be used in more than one place with different
 parameters).
 
 The "Default" key would be included if the nested template defines a parameter
-default (as usual), and the "Value" key would be included if a value is
-provided by either the parent template or parameter_defaults.  Note that since
-parameters are optional during template-validate calls, this could be None,
-e.g a Value of None indicates the parent provides a value but it was
-not provided as part of the template-validate call.
+default (as usual) or if a default is set via ``parameter_defaults``.
+The "Value" key would be included if a value is provided by the parent
+template. Note that since parameters are optional during template-validate
+calls, this could be None, e.g a Value of None indicates the parent provides
+a value but it was not provided as part of the template-validate call.
 
 This would mean that it's possible to build a schema from the returned data,
 such that, for example any parameters missing both "Default" and "Value" may
@@ -184,6 +229,52 @@ Note that the key naming in the returned data structure aligns with the
 existing Parameters section - when we reach a v2 API it would be good to
 rework both to use more native_api_style_names.
 
+Below is the example output when the example template above is modified to
+use resource groups. The only change is that the parent resource
+``level-1-resource`` has been replaced by a resource group named
+``level-1-groups``. The definition inside of the group is identical to
+the previous example.
+
+For brevity, the bulk of the output has been removed. The relevant point is
+that each node in the group will be listed by index:
+
+.. code-block:: json
+
+  {
+    "Description": "parent template",
+    "Parameters": {
+      "parent-p1": {
+        "Default": "foo",
+        "Type": "String",
+        "NoEcho": "false",
+        "Description": "parent first parameter",
+        "Label": "parent-p1"
+      }
+    },
+    "NestedParameters": {
+      "level-1-groups": {
+        "Type": "OS::Heat::ResourceGroup",
+        "Description": "No description",
+        "Parameters": {},
+        "NestedParameters": {
+          "0": {
+            "Type": "demo::Level1",
+            "Description": "level 1 nested template",
+            "Parameters": {
+              "level-1-p1": {},
+              "level-1-p2-optional": {}
+            },
+            "NestedParameters": {
+              "level-2-resource": {
+                "Type": "demo::Level2",
+                "Description": "level 2 nested template"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
 Alternatives
 ------------
