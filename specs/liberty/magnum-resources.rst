@@ -54,6 +54,12 @@ Add the OS::Magnum::BayModel resource
          dns_nameserver: String
          flavor: String
          docker_volume_size: Int
+         network_driver: String
+         http_proxy: String
+         https_proxy: String
+         no_proxy: String
+         labels: String
+         insecure: Boolean
 
 Add the OS::Magnum::Bay resource
 
@@ -66,6 +72,8 @@ Add the OS::Magnum::Bay resource
          name: String
          baymodel: { get_resource: model }
          node_count: Int
+         discovery_url: String
+         bay_create_timeout: Int
 
 Add the OS::Magnum::Pod resource
 
