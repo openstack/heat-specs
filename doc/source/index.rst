@@ -5,7 +5,7 @@ Juno
 ----
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :maxdepth: 1
 
    specs/juno/*
 
@@ -13,7 +13,7 @@ Kilo
 ----
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :maxdepth: 1
 
    specs/kilo/*
 
@@ -21,7 +21,7 @@ Liberty
 -------
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :maxdepth: 1
 
    specs/liberty/*
 
@@ -29,7 +29,7 @@ Mitaka
 ------
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :maxdepth: 1
 
    specs/mitaka/*
 
