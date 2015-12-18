@@ -94,7 +94,14 @@ class TestTitles(testscenarios.WithScenarios, testtools.TestCase):
                 0, len(trailing_spaces),
                 "Found trailing spaces on line %s of %s" % (i+1, tpl))
 
-    def test_template(self):
+    def test_check_extension(self):
+        files = glob.glob("specs/%s/*" % self.release)
+        for filename in files:
+            self.assertTrue(filename.endswith(".rst"),
+                            "spec's file must uses 'rst' extension.")
+
+    def test_check_titles(self):
+        # get titles from base template
         with open("specs/templates/%s-template.rst" % self.release) as f:
             template = f.read()
         base_spec = docutils.core.publish_doctree(template)
@@ -102,14 +109,30 @@ class TestTitles(testscenarios.WithScenarios, testtools.TestCase):
 
         files = glob.glob("specs/%s/*" % self.release)
         for filename in files:
-            self.assertTrue(filename.endswith(".rst"),
-                            "spec's file must uses 'rst' extension.")
             with open(filename) as f:
                 data = f.read()
 
             spec = docutils.core.publish_doctree(data)
             titles = self._get_titles(spec)
             self._check_titles(filename, expected_template_titles, titles)
+
+    def test_check_lines_wrapping(self):
+        files = glob.glob("specs/%s/*" % self.release)
+        for filename in files:
+            with open(filename) as f:
+                data = f.read()
             self._check_lines_wrapping(filename, data)
+
+    def test_check_no_cr(self):
+        files = glob.glob("specs/%s/*" % self.release)
+        for filename in files:
+            with open(filename) as f:
+                data = f.read()
             self._check_no_cr(filename, data)
+
+    def test_check_trailing_spaces(self):
+        files = glob.glob("specs/%s/*" % self.release)
+        for filename in files:
+            with open(filename) as f:
+                data = f.read()
             self._check_trailing_spaces(filename, data)
