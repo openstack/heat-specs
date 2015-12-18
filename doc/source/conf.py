@@ -33,7 +33,7 @@ feed_base_url = 'http://specs.openstack.org/openstack/heat-specs'
 feed_author = 'OpenStack Heat Team'
 
 exclude_patterns = [
-    '**/template.rst',
+    '**/templates/*.rst',
 ]
 
 # Optionally allow the use of sphinxcontrib.spelling to verify the
