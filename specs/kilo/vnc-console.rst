@@ -29,7 +29,7 @@ We should provide a way for template developers to show console
 url(for example, vnc, rdp and spice) in stack outputs.
 
 Usage Scenario
-==============
+--------------
 
 Get novnc console url::
 
@@ -92,6 +92,10 @@ to this attribute, or URLs for all supported types when no key is provided.
 Gracefully deal with the case when the type of the console being asked for
 is not available in current deployment.
 
+Alternatives
+------------
+
+None
 
 Implementation
 ==============

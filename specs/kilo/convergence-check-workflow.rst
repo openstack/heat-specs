@@ -43,6 +43,11 @@ trigger a check on any which now contain their full complement of inputs.
 The SyncPoint for the stack works similarly, except that when complete we
 notify the stack itself to mark the update as complete.
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

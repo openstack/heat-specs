@@ -85,6 +85,11 @@ This could also be an appropriate umbrella blueprint to switch to using RPC
 instead of full REST calls for when config and deployment resources call
 config and deployment APIs.
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

@@ -42,6 +42,11 @@ previous traversals should stop updating the stack data. This should be
 achieved using the "UPDATE ... WHERE ..." form as discussed in
 http://www.joinfu.com/2015/01/understanding-reservations-concurrency-locking-in-nova/
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

@@ -45,6 +45,11 @@ successfully complete (if any) alongside the ID of the current target template
 the stored template IDs are overwritten in such a way that we will no longer
 refer to a particular Template, delete that Template from the database.
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

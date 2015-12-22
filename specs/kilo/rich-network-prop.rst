@@ -161,6 +161,11 @@ Milestones
 Target Milestone for completion:
   Kilo-2
 
+Work Items
+----------
+
+Steps mentioned in section Proposed change describes the list of work items.
+
 Dependencies
 ============
 

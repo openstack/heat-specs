@@ -10,8 +10,8 @@ Implement 'InstanceId' for AutoScalingGroup
 
 https://blueprints.launchpad.net/heat/+spec/implement-instanceid-for-autoscalinggroup
 
-We should support the 'InstanceId' for AWS::AutoScaling::AutoScalingGroup resource
-to be compatible with AWSCloudFormation.
+We should support the 'InstanceId' for AWS::AutoScaling::AutoScalingGroup
+resource to be compatible with AWSCloudFormation.
 
 Problem description
 ===================
@@ -31,17 +31,19 @@ Proposed change
 ===============
 1. Change 'LaunchConfigurationName' to be an optional property
 2. Add 'InstanceId' property, optional and non-updatable
-3. Add validate for AWS::AutoScaling::AutoScalingGroup resource, make sure choose
-   one of the two properties
+3. Add validate for AWS::AutoScaling::AutoScalingGroup resource, make sure
+   choose one of the two properties
 4. Modify the _get_conf_properties() function
 
-   * if specify 'InstanceId', to get the attributes of the instance, and to make a temporary
-     launch config resource, and then return the resource and its properties.
+   * if specify 'InstanceId', to get the attributes of the instance, and
+     to make a temporary launch config resource, and then return the resource
+     and its properties.
 
-     Note that the attributes include ImageId, InstanceType, KeyName, SecurityGroups.
+     Note that the attributes include ImageId, InstanceType, KeyName,
+     SecurityGroups.
 
-   * if without 'InstanceId', using the old way to get the launch config resource and
-     its properties.
+   * if without 'InstanceId', using the old way to get the launch config
+     resource and its properties.
 
 Alternatives
 ------------

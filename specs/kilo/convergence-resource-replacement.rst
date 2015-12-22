@@ -50,6 +50,11 @@ dependent resources will update their dependency lists. The previous resource
 will be visited again in the clean-up phase of the graph, at which point it
 will be deleted.
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

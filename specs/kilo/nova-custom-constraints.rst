@@ -25,8 +25,8 @@ and apply nova flavor constraint.
 Problem description
 ===================
 
-1. Many resources have property InstanceId/Server which related with nova server,
-   but until now we haven't support nova server constraints.
+1. Many resources have property InstanceId/Server which related with nova
+   server, but until now we haven't support nova server constraints.
 2. Just define nova flavor custom constraint, but not to apply it.
 
 

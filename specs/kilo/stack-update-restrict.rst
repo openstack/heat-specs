@@ -28,8 +28,8 @@ Problem description
 Users can (and do) worry about stack update doing wonky things. The
 update-preview endpoint addresses this partially by showing what will probably
 happen. The limitation of the preview function is that resources can raise
-UpdateReplace exceptions at any time, making it impossible to be *certain* of the
-results of an update until it is performed.
+UpdateReplace exceptions at any time, making it impossible to be *certain* of
+the results of an update until it is performed.
 
 Proposed change
 ===============
@@ -48,9 +48,9 @@ preferences, which are nested into the keys "AutoScalingScheduledAction" and
 "AutoScalingRollingUpdate". CFN preferences would be unaffected by the HOT
 version of update policies.
 
-A user would specify per-resource how aggressive an update can be with a resource.
-The restrictions could be on updating the resource at all, or just on
-destroying the resource (including UpdateReplace).
+A user would specify per-resource how aggressive an update
+can be with a resource. The restrictions could be on updating the resource at
+all, or just on destroying the resource (including UpdateReplace).
 
 The base cases here are:
 

@@ -104,7 +104,7 @@ None
 
 
 References
-==========
+----------
 
 * [1]: https://wiki.openstack.org/wiki/CinderAPIv2
 * [2]: https://github.com/openstack/nova-specs/blob/master/specs/juno/support-cinderclient-v2.rst

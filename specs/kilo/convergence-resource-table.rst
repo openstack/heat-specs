@@ -45,6 +45,11 @@ https://github.com/zaneb/heat-convergence-prototype/blob/resumable/converge/reso
 - but those are too confusing. Once we settle on names, we should update the
 simulator code as well.)
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

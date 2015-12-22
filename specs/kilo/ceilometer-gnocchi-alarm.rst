@@ -81,7 +81,7 @@ None
 
 
 Usage Scenario
-==============
+--------------
 
 I want to create a autoscaling group that scale down when a statistics against
 cpu_util of a group of vm computed by Gnocchi, reach a certain threshold::
@@ -130,7 +130,7 @@ Dependencies
 
 None
 
-Links
-=====
+References
+----------
 
 * https://review.openstack.org/#/c/153291/

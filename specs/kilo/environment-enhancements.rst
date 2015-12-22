@@ -62,8 +62,8 @@ attributes in the outputs so they can be referenced outside of the
 nested stack. We should generate these attributes dynamically.
 
 
-Proposed changes
-================
+Proposed change
+===============
 
 1. Add the concept of parameter_defaults to the environment.
    This will look like the following::
@@ -75,7 +75,8 @@ Proposed changes
    The behaviour of these parameters will be as follows:
    - if there is no parameter definition for it, it will be ignored.
    - these will be passed into all nested templates
-   - they will only be used as a default so that they can be explicitly overridden in the "parameters" section.
+   - they will only be used as a default so that they can be explicitly
+   overridden in the "parameters" section.
 
 2. Support a specially named output to Template resources that is used
    for references.
