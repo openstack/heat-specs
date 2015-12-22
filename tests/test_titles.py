@@ -20,7 +20,7 @@ import testtools
 
 def create_scenarios():
     # create a set of excluded from testing directories
-    exclude_dirs = {'templates', 'juno', 'kilo'}
+    exclude_dirs = {'templates', 'kilo'}
     # get whole list of sub-directories in specs directory
     release_names = [x.split('/')[1] for x in glob.glob('specs/*/')]
     # generate a list of scenarious (1 scenario - for each release)

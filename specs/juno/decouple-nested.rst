@@ -48,7 +48,7 @@ new interfaces with minimal rework of the StackResource subclasses.
 
 One area which may be left for a future enhancement is the polling for COMPLETE
 state after triggering the action via RPC, e.g when we triggger a nested stack
-create via an RPC call, we will poll the DB directly waiting for the CREATE 
+create via an RPC call, we will poll the DB directly waiting for the CREATE
 COMPLETE state in check_create_complete.  In future, it would be better to wait
 for a notification to avoid the overhead of polling the DB.
 

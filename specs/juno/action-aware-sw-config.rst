@@ -22,10 +22,10 @@ Problem description
 With the current design of Heat software orchestration, "software components"
 defined through SoftwareConfig resources allow for only one configuration (e.g.
 one script) to be specified. Typically, however, a software component has a
-lifecycle that is hard to express in a single script. For example, software must
-be installed (created), there should be support for suspend/resume handling, and
-it should be possible to allow for deletion-logic. This is also in line with the
-general Heat resource lifecycle.
+lifecycle that is hard to express in a single script. For example, software
+must be installed (created), there should be support for suspend/resume
+handling, and it should be possible to allow for deletion-logic. This is also
+in line with the general Heat resource lifecycle.
 
 To achieve the desired behavior of having all those lifecycle hooks with the
 current design, one would have to define several SoftwareConfig resources along
@@ -51,8 +51,8 @@ Tomcat web server, MySQL database) can be defined in one place (i.e. one
 *SoftwareComponent* resource) and can be associated to a server by means of one
 single SoftwareDeployment resource.
 
-The new SoftwareComponent resource will - like the SoftwareConfig resource - not
-gain any new behavior, but it will also be static store of software
+The new SoftwareComponent resource will - like the SoftwareConfig resource -
+not gain any new behavior, but it will also be static store of software
 configuration data. Compared to SoftwareConfig, though, it will be extended to
 provide several configurations corresponding to Heat lifecyle actions in one
 place and following a well-defined structure so that SoftwareDeployment
@@ -71,8 +71,8 @@ structure and semantics.
 As an alternative, we could choose to extend the existing "SoftwareConfig"
 resource, but the overloaded semantics could cause confusion with users.
 Furthermore, extension of the existing resource could raise additional
-complexity when having to maintain backwards-compatibility with existing uses of
-SoftwareConfig.
+complexity when having to maintain backwards-compatibility with existing uses
+of SoftwareConfig.
 
 The set of properties for OS::Heat::SoftwareComponent will be as follows:
 
@@ -126,9 +126,9 @@ tool
   analogous to the SoftwareConfig resource's *group* property, but it has been
   suggested to use a more intuitive name here.
   Having the *tool* property for each config entry allows for mixing different
-  configuration tools for one software component. For example, the deployment of
-  software (i.e. CREATE) could be done using Chef or Puppet, but a simple script
-  could be used for SUSPEND or RESUME.
+  configuration tools for one software component. For example, the deployment
+  of software (i.e. CREATE) could be done using Chef or Puppet, but a simple
+  script could be used for SUSPEND or RESUME.
 
 The *inputs* and *outputs* properties will be defined global for the complete
 SoftwareComponent definition instead of being provided per config hook.
@@ -191,9 +191,9 @@ Adaptation of SoftwareDeployment resource
 The SoftwareDeployment resource (OS::Heat::SoftwareDeployment) will be adapted
 to cope with the new SoftwareComponent resource, for example to provide the
 contents of the *configs* property to the instance in the appropriate form.
-Furthermore, the SoftwareDeployment resource's action and state (e.g. CREATE and
-IN_PROGRESS) will be passed to the instance so the in-instance configuration
-hook can select the right configuration to be applied (see also
+Furthermore, the SoftwareDeployment resource's action and state (e.g. CREATE
+and IN_PROGRESS) will be passed to the instance so the in-instance
+configuration hook can select the right configuration to be applied (see also
 :ref:`in_instance_hooks`).
 
 The SoftwareDeployment resource creates transient configuration objects at
@@ -204,21 +204,21 @@ component (i.e. the complete *configs* property) will be stored in that
 transient configuration object, and it will therefore be available to
 in-instance tools.
 
-There will be no change in SoftwareDeployment properties, but there will have to
-be special handling for the *actions* property: the *actions* property will be
-ignored when a SoftwareComponent resource is associated to a SoftwareDeployment.
-In that case, the entries defined in the *configs* property will provide the set
-of actions on which SoftwareDeployment, or in-instance tools respectively, shall
-react.
+There will be no change in SoftwareDeployment properties, but there will have
+to be special handling for the *actions* property: the *actions* property
+will be ignored when a SoftwareComponent resource is associated to a
+SoftwareDeployment. In that case, the entries defined in the *configs* property
+will provide the set of actions on which SoftwareDeployment, or in-instance
+tools respectively, shall react.
 
-Note: as an alternative to passing the complete set of configurations defined in
-a SoftwareComponent, along with the SoftwareDeployment's action and state to the
-instance, we could make the SoftwareDeployment resource select the right config
-based on its action and state and only pass this to the instance. This could
-possibly allow for using the existing in-instance hooks without change. However,
-at the time of writing this spec, it was decided to implement config select in
-the in-instance hook since it gives more power to the in-instance implementation
-for possible future enhancements.
+Note: as an alternative to passing the complete set of configurations defined
+in a SoftwareComponent, along with the SoftwareDeployment's action and state
+to the instance, we could make the SoftwareDeployment resource select the right
+config based on its action and state and only pass this to the instance. This
+could possibly allow for using the existing in-instance hooks without change.
+However, at the time of writing this spec, it was decided to implement config
+select in the in-instance hook since it gives more power to the in-instance
+implementation for possible future enhancements.
 
 
 .. _in_instance_hooks:
@@ -231,8 +231,8 @@ indicated by the associated SoftwareDeployment resources.
 
 In case of a *SoftwareComponent* being deployed, the complete set of
 configurations will be made available to in-instance hooks via Heat metadata.
-In addition, SoftwareDeployment resources will add their action and state to the
-metadata (e.g. CREATE and IN_PROGRESS). Based on that information, the
+In addition, SoftwareDeployment resources will add their action and state
+to the metadata (e.g. CREATE and IN_PROGRESS). Based on that information, the
 in-instance hook will then be able to select and apply the right configuration
 at runtime.
 
@@ -277,13 +277,13 @@ lifecycle operations CREATE, DELETE, SUSPEND, RESUME and UPDATE. It is
 recognized that special handling might make sense for scenarios where servers
 are being quiesced for an upgrade, or where they need to be evacuated for a
 scaling operation. In addition, users might want to define complete custom
-actions (see also :ref:`software_component_resource`). Handling of those actions
-are out of scope for now, but can be enabled by follow-up work on-top of the
-implementation of this specification. For example, an additional property
-*extended_action* could be added to SoftwareDeployment which could be set to
-the extended actions mentioned above. When passing this additional property to
-in-instance hooks, the hooks could then select and apply the respective config
-for the specified extended action.
+actions (see also :ref:`software_component_resource`). Handling of those
+actions are out of scope for now, but can be enabled by follow-up work on-top
+of the implementation of this specification. For example, an additional
+property *extended_action* could be added to SoftwareDeployment which could be
+set to the extended actions mentioned above. When passing this additional
+property to in-instance hooks, the hooks could then select and apply
+the respective config for the specified extended action.
 
 
 Implementation

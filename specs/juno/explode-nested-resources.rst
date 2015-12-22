@@ -33,8 +33,8 @@ makes several use cases difficult or sub-optimal because of the need to make
 several API calls on resource reference links.
 
 * When deleting a stack, a UI should be able to present the user with a list
-  of *all* resources associated with a given stack to avoid confusion about what
-  and why certain resources were deleted due to a stack delete.
+  of *all* resources associated with a given stack to avoid confusion about
+  what and why certain resources were deleted due to a stack delete.
 * A user of the API (either via CLI, curl, or other method) wants to be able
   to quickly and easily list and follow the status of every resource associated
   with a stack, regardless of a resource's position in the stack hierarchy.
