@@ -19,7 +19,7 @@ Problem description
 Currently there is no way to find out what is the type of attribute returned
 by the get_attr function. This makes it difficult for the template authors to
 figure out what type of value will be returned. Indexing and Mapping on the
-attributes also becomes a issue without the knowledge of the attribute type.
+attributes also becomes an issue without the knowledge of the attribute type.
 
 Proposed change
 ===============

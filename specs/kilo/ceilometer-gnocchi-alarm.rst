@@ -83,7 +83,7 @@ None
 Usage Scenario
 ==============
 
-I want to create a autoscaling group that scale down when a statistics against
+I want to create an autoscaling group that scale down when a statistics against
 cpu_util of a group of vm computed by Gnocchi, reach a certain threshold::
 
   resources:

@@ -55,7 +55,7 @@ Target Milestone for completion:
 Work Items
 ----------
 
-* Update the heat API to support passing an new option specifying
+* Update the heat API to support passing a new option specifying
   the required template type. Return the cfn template if not specify
   the new option.
 * Update python-heatclient to expose this new option.

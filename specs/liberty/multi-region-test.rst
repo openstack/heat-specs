@@ -35,7 +35,7 @@ and openstack-infra/project-config to allow this test to run as a gate test.
 Alternatives
 ------------
 
-In case it turns out to be impossible to create an multinode test setup with
+In case it turns out to be impossible to create a multinode test setup with
 multiple regions in the openstack infrastructure, this scenario test could also
 be added as a local-only test which is not ran at the gate.
 

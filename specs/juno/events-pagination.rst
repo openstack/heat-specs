@@ -28,7 +28,7 @@ retrieve a subset of events.
 Problem description
 ===================
 
-It is now highly probable that a event-list call could
+It is now highly probable that an event-list call could
 end up attempting to return hundreds of events(especially for
 AutoScalingGroup resources). At a certain point Heat
 starts responding with a 500 error because the response is too large.
