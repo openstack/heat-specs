@@ -14,10 +14,19 @@ import glob
 import re
 
 import docutils.core
+import testscenarios
 import testtools
 
 
-class TestTitles(testtools.TestCase):
+class TestTitles(testscenarios.WithScenarios, testtools.TestCase):
+    # create a set of excluded from testing directories
+    exclude_dirs = {'templates', 'juno', 'kilo'}
+    # get whole list of sub-directories in specs directory
+    release_names = [x.split('/')[1] for x in glob.glob('specs/*/')]
+    # generate a list of scenarious (1 scenario - for each release)
+    scenarios = [("%s-release" % name, dict(release=name))
+                 for name in set(release_names) - exclude_dirs]
+
     def _get_title(self, section_tree):
         section = {
             'subtitles': [],
@@ -86,28 +95,21 @@ class TestTitles(testtools.TestCase):
                 "Found trailing spaces on line %s of %s" % (i+1, tpl))
 
     def test_template(self):
-        releases = [x.split('/')[1] for x in glob.glob('specs/*/')]
-        # ignore directory with base templates for releases
-        releases.remove('templates')
-        # Ignore juno and kilo.
-        releases.remove('juno')
-        releases.remove('kilo')
-        for release in releases:
-            with open("specs/templates/%s-template.rst" % release) as f:
-                template = f.read()
-            spec = docutils.core.publish_doctree(template)
-            template_titles = self._get_titles(spec)
+        with open("specs/templates/%s-template.rst" % self.release) as f:
+            template = f.read()
+        base_spec = docutils.core.publish_doctree(template)
+        expected_template_titles = self._get_titles(base_spec)
 
-            files = glob.glob("specs/%s/*" % release)
-            for filename in files:
-                self.assertTrue(filename.endswith(".rst"),
-                                "spec's file must uses 'rst' extension.")
-                with open(filename) as f:
-                    data = f.read()
+        files = glob.glob("specs/%s/*" % self.release)
+        for filename in files:
+            self.assertTrue(filename.endswith(".rst"),
+                            "spec's file must uses 'rst' extension.")
+            with open(filename) as f:
+                data = f.read()
 
-                spec = docutils.core.publish_doctree(data)
-                titles = self._get_titles(spec)
-                self._check_titles(filename, template_titles, titles)
-                self._check_lines_wrapping(filename, data)
-                self._check_no_cr(filename, data)
-                self._check_trailing_spaces(filename, data)
+            spec = docutils.core.publish_doctree(data)
+            titles = self._get_titles(spec)
+            self._check_titles(filename, expected_template_titles, titles)
+            self._check_lines_wrapping(filename, data)
+            self._check_no_cr(filename, data)
+            self._check_trailing_spaces(filename, data)
