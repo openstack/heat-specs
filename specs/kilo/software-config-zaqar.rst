@@ -55,6 +55,11 @@ that it is not necessary to create the stack users.
 signal_transport:AUTO will be modified so that ZAQAR_MESSAGE is the preferred
 method if there is a configured messaging endpoint.
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

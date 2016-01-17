@@ -96,6 +96,11 @@ can be achieved by the hooks checking for the input ``deploy_status_aware``
 being set to ``true``. Only new heat will set this input value to ``true`` so
 the hook can check this input and behave accordingly.
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

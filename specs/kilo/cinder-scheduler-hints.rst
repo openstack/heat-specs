@@ -38,7 +38,7 @@ None
 
 
 Usage Scenario
-==============
+--------------
 
 For instance, request creation of `volume-A` on a different back-end than
 `volume-B` using the different_host scheduler hint::

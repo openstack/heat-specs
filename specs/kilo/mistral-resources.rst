@@ -98,7 +98,8 @@ There is some use cases, which should be described:
 
    When stack will created, to execute workflow run next command::
 
-     heat resource-signal stack_name workflow_name -D 'Json-type execution input'
+      heat resource-signal stack_name workflow_name \
+          -D 'Json-type execution input'
 
    Execution state will be available in 'executions' attribute as a dict.
 
@@ -160,7 +161,9 @@ There is some use cases, which should be described:
             vm_id: $.vm_id
           tasks:
             create_server:
-              action: nova.servers_create name={$.vm_name} image={$.image_ref} flavor={$.flavor_ref}
+              action: >
+                nova.servers_create name={$.vm_name} image={$.image_ref}
+                flavor={$.flavor_ref}
               publish:
                 vm_id: $.id
               on-success:

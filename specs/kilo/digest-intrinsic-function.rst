@@ -36,9 +36,9 @@ Add another class to run existing digest algorithms (e.g. MD5, SHA-512, etc) on
 user provided data and expose it in the HOT functions list.  The class would
 take the name of the digest algortihm and the value to be hashed.
 
-Python's ``hashlib`` natively supports md5, sha1 and sha2 (sha224, 256, 384, 512)
-on most platforms and this will be documented as being the supported list of
-algorithms.  But the cloud provider may go beyond and support more algortihms
+Python's ``hashlib`` natively supports md5, sha1 and sha2 (sha224, 256, 384,
+512) on most platforms and this will be documented as being the supported list
+of algorithms. But the cloud provider may go beyond and support more algortihms
 as well, since, depending on the way Python was built, ``hashlib`` can also use
 algorithms supported by OpenSSL.
 

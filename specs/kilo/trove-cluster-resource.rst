@@ -48,7 +48,7 @@ None
 
 
 Usage Scenario
-==============
+--------------
 
 Create the OS::Trove::Cluster resource like this::
 

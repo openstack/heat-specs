@@ -24,9 +24,11 @@ https://blueprints.launchpad.net/heat/+spec/versioned-objects
 
 Problem description
 ===================
-We are looking to improve the way we deal with versioning (of all sorts db/rpc/rest/templates/plugins).
-Nova has come up with the idea of versioned objects, that Ironic has also now used.
-This has now been proposed as an oslo library:  https://review.openstack.org/#/c/127532/
+We are looking to improve the way we deal with versioning (of all sorts
+db/rpc/rest/templates/plugins).
+Nova has come up with the idea of versioned objects, that Ironic has also now
+used. This has now been proposed as an oslo library:
+https://review.openstack.org/#/c/127532/
 
 https://etherpad.openstack.org/p/kilo-crossproject-upgrades-and-versioning
 

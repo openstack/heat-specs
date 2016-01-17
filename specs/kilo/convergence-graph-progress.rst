@@ -62,6 +62,11 @@ http://www.joinfu.com/2015/01/understanding-reservations-concurrency-locking-in-
 - which probably means adding an extra integer field that is incremented on
 every write (since we can't really query on a text field).
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

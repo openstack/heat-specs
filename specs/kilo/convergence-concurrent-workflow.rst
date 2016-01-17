@@ -56,6 +56,11 @@ An exception to all of this is the case where the graph node is of the update
 type and the resource status is DELETE_IN_PROGRESS. In that case, we should
 simply create a replacement resource.
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

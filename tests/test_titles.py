@@ -20,7 +20,7 @@ import testtools
 
 def create_scenarios():
     # create a set of excluded from testing directories
-    exclude_dirs = {'templates', 'kilo'}
+    exclude_dirs = {'templates', }
     # get whole list of sub-directories in specs directory
     release_names = [x.split('/')[1] for x in glob.glob('specs/*/')]
     # generate a list of scenarious (1 scenario - for each release)
@@ -119,7 +119,6 @@ class TestTitles(testscenarios.WithScenarios, testtools.TestCase):
             template = f.read()
         base_spec = docutils.core.publish_doctree(template)
         expected_template_titles = self._get_titles(base_spec)
-
         for filename, data in self._iterate_files():
             spec = docutils.core.publish_doctree(data)
             titles = self._get_titles(spec)

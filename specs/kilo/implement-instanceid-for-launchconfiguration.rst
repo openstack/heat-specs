@@ -10,8 +10,8 @@ Implement 'InstanceId' for LaunchConfiguration
 
 https://blueprints.launchpad.net/heat/+spec/implement-instanceid-for-launchconfiguration
 
-We should support the 'InstanceId' for AWS::AutoScaling::LaunchConfiguration resource
-to be compatible with AWSCloudFormation.
+We should support the 'InstanceId' for AWS::AutoScaling::LaunchConfiguration
+resource to be compatible with AWSCloudFormation.
 
 Problem description
 ===================
@@ -22,7 +22,8 @@ launch configuration to use settings from an existing instance, see:
 http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-launchconfig.html
 http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/create-lc-with-instanceID.html
 
-Will be good to implement 'InstanceId' property to be compatible with AWSCloudFormation.
+Will be good to implement 'InstanceId' property to be compatible with
+AWSCloudFormation.
 
 
 Proposed change
@@ -33,8 +34,8 @@ Proposed change
    specify 'InstanceId', the other two properties are required
 4. According to the aws developer guide and implementation, allows three cases:
 
- * Without 'InstanceId', should specify 'ImageId' and 'InstanceType' properties,
-   using the old way to create the new launch configuration.
+ * Without 'InstanceId', should specify 'ImageId' and 'InstanceType'
+   properties, using the old way to create the new launch configuration.
 
  * Specify 'InstanceId' only, the new launch configuration has
    'ImageId', 'InstanceType', 'KeyName', and 'SecurityGroups'

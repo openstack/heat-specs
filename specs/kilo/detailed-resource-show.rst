@@ -46,7 +46,8 @@ and be able to look up attributes after creating their stacks even if the
 template author didn't think about them beforehand.
 
 Because these attributes can be retrieved either by the resource's client or by
-changing the template and adding them to the outputs section, this should not pose
+changing the template and adding them to the outputs section, this should not
+pose
 any more risk of revealing sensitive data than what is already possible.
 
 This can be achieved by changing the API response to also include attributes
@@ -68,9 +69,12 @@ For such resources, the API can be extended to accept a query param that will
 hold the names of the attributes to be retrived.  Something like:
 
   # API
-  /<tenant_id>/stacks/<stack_name>/<stack_id>/resources/<resource_name>?with_attr=foo&with_attr=bar
+
+  /<tenant_id>/stacks/<stack_name>/<stack_id>/resources/
+  <resource_name>?with_attr=foo&with_attr=bar
 
   # heatclient
+
   resource-show <stack_name> <resource_name> --with-attr foo --with-attr bar
 
 However, certain clients or scripts may want to consume a given attribute
@@ -79,11 +83,17 @@ things RESTful and return only the discoverable attributes of a resource; and
 another one that would only return the value of the requested attribute.
 
   # API
-  /<tenant_id>/stacks/<stack_name>/<stack_id>/resources/<resource_name>/attributes
-  /<tenant_id>/stacks/<stack_name>/<stack_id>/resources/<resource_name>/attributes/<attribute_name>
+
+  /<tenant_id>/stacks/<stack_name>/<stack_id>/resources/<resource_name>/
+  attributes
+
+  /<tenant_id>/stacks/<stack_name>/<stack_id>/resources/<resource_name>/
+  attributes/<attribute_name>
 
   # heatclient
+
   heat resource-attributes <stack-id> <resource-name>
+
   heat resource-attributes <stack-id> <resource-name> <attribute-name>
 
 Alternatives

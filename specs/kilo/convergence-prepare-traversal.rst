@@ -56,6 +56,11 @@ row with its own newly-generated traversal ID. In this case it should roll back
 the database changes, by deleting any newly-created Resource rows that it added
 as well as all of the SyncPoints.
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 

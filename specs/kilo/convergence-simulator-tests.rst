@@ -51,6 +51,11 @@ using testtools primitives and passing the wrappers above as globals, rather
 than those defined in
 https://github.com/zaneb/heat-convergence-prototype/blob/resumable/converge/__init__.py#L24-L41
 
+Alternatives
+------------
+
+None
+
 Implementation
 ==============
 
