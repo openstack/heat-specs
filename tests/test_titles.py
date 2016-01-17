@@ -87,11 +87,13 @@ class TestTitles(testtools.TestCase):
 
     def test_template(self):
         releases = [x.split('/')[1] for x in glob.glob('specs/*/')]
+        # ignore directory with base templates for releases
+        releases.remove('templates')
         # Ignore juno and kilo.
         releases.remove('juno')
         releases.remove('kilo')
         for release in releases:
-            with open("specs/%s/template.rst" % release) as f:
+            with open("specs/templates/%s-template.rst" % release) as f:
                 template = f.read()
             spec = docutils.core.publish_doctree(template)
             template_titles = self._get_titles(spec)
