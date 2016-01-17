@@ -19,8 +19,9 @@ Add filter support to stack query for cfn API
 
 https://blueprints.launchpad.net/heat/+spec/cfn-liststacks-filter
 
-Currently filtering stacks by status is supported in openstack API, for the compatibility
-with Cloudformation API, it also should be supported in cfn API.
+Currently filtering stacks by status is supported in openstack API, for
+the compatibility with Cloudformation API, it also should be supported
+in cfn API.
 
 Problem description
 ===================
@@ -31,8 +32,9 @@ implemented in openstack API, we also need to implement it in cfn API.
 Proposed change
 ===============
 
-Add parameter "StackStatusFilter" for list-stacks of cfn API, and pass the fiter parameters
-to the backend, then return the stacks filtered by status. The url should be like this::
+Add parameter "StackStatusFilter" for list-stacks of cfn API, and pass
+the fiter parameters to the backend, then return the stacks filtered by status.
+The url should be like this::
 
     https://example.com:8000/v1/
          ?Action=ListStacks

@@ -63,9 +63,9 @@ https://blueprints.launchpad.net/heat/+spec/resource-package-reorg
 Another problem is that having all classes implemented in almost one file is
 making the implementation difficult to digest or improve.  For example, it
 may make a better sense to have InstanceGroup a subclass of ResourceGroup.
-For another example, it doesn't make much sense to have AutoScalingResourceGroup
-a subclass of InstanceGroup because the subclass is more open to other resource
-types as its members.
+For another example, it doesn't make much sense to have
+AutoScalingResourceGroupa subclass of InstanceGroup because the subclass is
+more open to other resource types as its members.
 
 Proposed change
 ===============
@@ -113,9 +113,9 @@ The AWS version will be relocated into heat/engine/resources/aws subdirectory,
 including the LaunchConfiguration implementation.  The OpenStack version will
 be relocated into heat/engine/resources/openstack subdirectory.
 
-The shared parent class ResourceGroup will remain in heat/engine/resources, while
-the CooldownMixin class will be relocated into heat/scaling subdirectory.  The
-eventual layout of the modules and classes would look like this::
+The shared parent class ResourceGroup will remain in heat/engine/resources,
+while the CooldownMixin class will be relocated into heat/scaling subdirectory.
+The eventual layout of the modules and classes would look like this::
 
   heat/engine/resources/
     |
@@ -139,8 +139,8 @@ eventual layout of the modules and classes would look like this::
     +-- (possibily other shared utility classes)
 
 
-This reshuffling is optional.  We will determine whether reshuffling is necessary
-indeed after the cleanup work is done.
+This reshuffling is optional.  We will determine whether reshuffling is
+necessary indeed after the cleanup work is done.
 
 Alternatives
 ------------
@@ -149,9 +149,9 @@ Since this is a pure implementation level change, one rule of thumb is that "we
 don't break userland".
 
 We can have AWS AutoScalingPolicy extend Heat AutoScalingPolicy.  However that
-may mean that any future changes to Heat implementation must be very careful, in
-case those changes may break the conformance of the AWS version to its Amazon
-specification.
+may mean that any future changes to Heat implementation must be very careful,
+in case those changes may break the conformance of the AWS version to its
+Amazon specification.
 
 The same applies to the two versions of AutoScalingGroup.  Hopefully, we may
 extract common code into ResourceGroup level to minimize code duplication.

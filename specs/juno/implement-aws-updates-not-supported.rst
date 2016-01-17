@@ -48,8 +48,10 @@ from 10 to 11 using ``update-stack`` command::
     {
      "ResourceStatus": "UPDATE_FAILED",
      "ResourceType": "AWS::EC2::Volume",
-     "ResourceStatusReason": "Update to resource type AWS::EC2::Volume is not supported.",
-     "ResourceProperties": "{\"AvailabilityZone\":\"us-west-2a\",\"Size\":\"11\"}"
+     "ResourceStatusReason":
+        "Update to resource type AWS::EC2::Volume is not supported.",
+     "ResourceProperties":
+        "{\"AvailabilityZone\":\"us-west-2a\",\"Size\":\"11\"}"
     }
 
 Heat

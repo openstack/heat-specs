@@ -33,19 +33,21 @@ in AWSCloudFormation, 'Volumes' and 'BlockDeviceMappings', see:
 
 http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html
 
-1. 'Volumes' support the 'volume_id', user can specify the volume to be attached
-   to the instance. This way has been implemented in Heat, but it's not a good way
-   for batch creation because one volume can't be attached to many instances.
+1. 'Volumes' support the 'volume_id', user can specify the volume to be
+   attached to the instance. This way has been implemented in Heat, but
+   it's not a good way for batch creation because one volume can't be attached
+   to many instances.
 
-2. 'BlockDeviceMappings' support the 'snapshot_id', user can specify a snapshot,
-   then a volume will be created from the snapshot, and the volume will be attached
-   to the instance. This way is a good way for batch creation.
+2. 'BlockDeviceMappings' support the 'snapshot_id', user can specify
+   a snapshot, then a volume will be created from the snapshot, and the volume
+   will be attached to the instance. This way is a good way for batch creation.
 
 Nova supports to create a server with a block device mapping:
 
 http://docs.openstack.org/api/openstack-compute/2/content/ext-os-block-device-mapping-v2-boot.html
 
-So, we should support the 'BlockDeviceMappings' for AWS::EC2::Instance resource.
+So, we should support the 'BlockDeviceMappings' for AWS::EC2::Instance
+resource.
 
 Proposed change
 ===============

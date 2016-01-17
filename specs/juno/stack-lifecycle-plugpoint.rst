@@ -77,9 +77,9 @@ it made with respect to the stack should be un-made.
 All stack actions would need calls to either pre or post operations, or both.
 This includes at least create, update, delete, abandon, and adopt. In a basic
 design, modifications to the Stack class in parser.py are sufficient for adding
-the call to the pre-operation and post-operation methods found via the lifecycle
-plugin registry. The post-operation calls would need to be called in both the
-normal paths and all error paths. 
+the call to the pre-operation and post-operation methods found via the
+lifecycle plugin registry. The post-operation calls would need to be called in
+both the normal paths and all error paths.
 
 Alternatives
 ------------
@@ -87,12 +87,12 @@ Alternatives
 No other approach was identified that would allow the operator (heat provider)
 to extend heat with this functionality for all stack deployments.
 
-https://blueprints.launchpad.net/heat/+spec/lifecycle-callbacks describes an approach
-where heat users can optionally specify callbacks for in templates for
-stack and resource events.
-It does not provide the ubiquitous callbacks (for all stacks) that would be needed by
-the use cases described above, unless the heat provider tightly controls the
-templates that users can use.
+https://blueprints.launchpad.net/heat/+spec/lifecycle-callbacks describes
+an approach where heat users can optionally specify callbacks for in templates
+for stack and resource events.
+It does not provide the ubiquitous callbacks (for all stacks) that would be
+needed by the use cases described above, unless the heat provider tightly
+controls the templates that users can use.
 
 Implementation
 ==============
@@ -101,6 +101,9 @@ Implementation
 A patch comprising a full implementation of the blueprint
 (https://review.openstack.org/#/c/89363/) is already being
 reviewed, under the old pre-spec process.
+
+Assignee(s)
+-----------
 
 Primary assignee:
   William C. Arnold (barnold-8)

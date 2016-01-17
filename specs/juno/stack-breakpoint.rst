@@ -23,7 +23,7 @@ the error.  If possible, the user may try to enhance the logs by adding more
 log message in the script.  This initial approach should resolve many errors,
 but difficult error may require more active debugging.  The user would need to
 stop at or before the point of template failure, inspect variables, check the
-environment, run command or script manually, etc.  Since the template is 
+environment, run command or script manually, etc.  Since the template is
 declarative, the user would need to be able to recreate the error consistently.
 
 Support for troubleshooting is broad and will require many blueprints to

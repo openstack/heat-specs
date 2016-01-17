@@ -72,7 +72,8 @@ Work Items
 * Add support for pagination and sorting events
 * Add UT fot the pagination and sorting events
 * Add support for pagination and sorting events in python-heatclient
-* Write tempest api orchestration and scenario test to exercise events pagination
+* Write tempest api orchestration and scenario test to exercise events
+  pagination
 
 Dependencies
 ============
