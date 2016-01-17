@@ -18,7 +18,7 @@ import testscenarios
 import testtools
 
 
-class TestTitles(testscenarios.WithScenarios, testtools.TestCase):
+def create_scenarios():
     # create a set of excluded from testing directories
     exclude_dirs = {'templates', 'juno', 'kilo'}
     # get whole list of sub-directories in specs directory
@@ -26,6 +26,19 @@ class TestTitles(testscenarios.WithScenarios, testtools.TestCase):
     # generate a list of scenarious (1 scenario - for each release)
     scenarios = [("%s-release" % name, dict(release=name))
                  for name in set(release_names) - exclude_dirs]
+    return scenarios
+
+
+class TestTitles(testscenarios.WithScenarios, testtools.TestCase):
+
+    scenarios = create_scenarios()
+
+    def _iterate_files(self):
+        files = glob.glob("specs/%s/*" % self.release)
+        for filename in files:
+            with open(filename) as f:
+                data = f.read()
+            yield filename, data
 
     def _get_title(self, section_tree):
         section = {
@@ -107,32 +120,19 @@ class TestTitles(testscenarios.WithScenarios, testtools.TestCase):
         base_spec = docutils.core.publish_doctree(template)
         expected_template_titles = self._get_titles(base_spec)
 
-        files = glob.glob("specs/%s/*" % self.release)
-        for filename in files:
-            with open(filename) as f:
-                data = f.read()
-
+        for filename, data in self._iterate_files():
             spec = docutils.core.publish_doctree(data)
             titles = self._get_titles(spec)
             self._check_titles(filename, expected_template_titles, titles)
 
     def test_check_lines_wrapping(self):
-        files = glob.glob("specs/%s/*" % self.release)
-        for filename in files:
-            with open(filename) as f:
-                data = f.read()
+        for filename, data in self._iterate_files():
             self._check_lines_wrapping(filename, data)
 
     def test_check_no_cr(self):
-        files = glob.glob("specs/%s/*" % self.release)
-        for filename in files:
-            with open(filename) as f:
-                data = f.read()
+        for filename, data in self._iterate_files():
             self._check_no_cr(filename, data)
 
     def test_check_trailing_spaces(self):
-        files = glob.glob("specs/%s/*" % self.release)
-        for filename in files:
-            with open(filename) as f:
-                data = f.read()
+        for filename, data in self._iterate_files():
             self._check_trailing_spaces(filename, data)
