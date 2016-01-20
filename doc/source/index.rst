@@ -48,7 +48,6 @@ heat-specs Repository Information
    :maxdepth: 2
 
    README <readme>
-   contributing
 
 
 Indices and tables
