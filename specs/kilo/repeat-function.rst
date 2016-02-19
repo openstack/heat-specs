@@ -65,11 +65,11 @@ Following the security group example from the previous section, the
           rules:
             repeat:
               for_each:
-                %port%: { get_param: ports }
+                <%port%>: { get_param: ports }
               template:
                 protocol: tcp
-                port_range_min: %port%
-                port_range_max: %port%
+                port_range_min: <%port%>
+                port_range_max: <%port%>
 
 Below is another example in which this function enables a solution that is
 currently impossible to implement::
@@ -81,9 +81,9 @@ currently impossible to implement::
           networks:
             repeat:
               for_each:
-                %net_name%: { get_param: networks }
+                <%net_name%>: { get_param: networks }
               template:
-                network: %net_name%
+                network: <%net_name%>
 
 In this example a list of networks that an instance needs to be attached to is
 given as a list in a parameter.
@@ -100,11 +100,11 @@ support parametrized protocols as follows::
           rules:
             repeat:
               for_each:
-                %port%: { get_param: ports }
-                %protocol%: { get_param: protocols }
+                <%port%>: { get_param: ports }
+                <%protocol%>: { get_param: protocols }
               template:
-                protocol: %protocol%
-                port_range_min: %port%
+                protocol: <%protocol%>
+                port_range_min: <%port%>
 
 The ``for_each`` argument specifies the loop variable and the list to
 iterate on as a key-value pair. The loop variable has to be chosen carefully,
