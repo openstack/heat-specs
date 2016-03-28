@@ -1,0 +1,1 @@
+../templates/newton-template.rst

@@ -33,6 +33,13 @@ Mitaka
 
    specs/mitaka/*
 
+Newton
+------
+.. toctree::
+   :glob:
+   :maxdepth: 1
+
+   specs/newton/*
 
 heat-specs Repository Information
 =================================
