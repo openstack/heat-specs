@@ -42,7 +42,7 @@ Newton
    specs/newton/*
 
 Ocata
-------
+-----
 .. toctree::
    :glob:
    :maxdepth: 1
@@ -56,6 +56,14 @@ Pike
    :maxdepth: 1
 
    specs/pike/*
+
+Backlog
+-------
+.. toctree::
+   :glob:
+   :maxdepth: 1
+
+   specs/backlog/*
 
 heat-specs Repository Information
 =================================
