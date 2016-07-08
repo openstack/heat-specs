@@ -328,7 +328,7 @@ Required Properties:
 --------------------
 
 delay:
-  The minimum time in seconds between regular connections of member.
+  The minimum time in milliseconds between regular connections of member.
   Integer Value.
   Update allowed.
 
@@ -345,7 +345,7 @@ to INACTIVE.
   Must be in the range of 1 to 10.
 
 timeout:
-  Maximum number of seconds for a monitor to wait for a connection to be
+  Maximum number of milliseconds for a monitor to wait for a connection to be
 established before it times out.
   Integer Value.
   Update allowed.
@@ -387,7 +387,7 @@ Attributes:
 admin_state_up:
   The administrative state of this health monitor.
 delay:
-  The minimum time in seconds between regular connections of the member.
+  The minimum time in milliseconds between regular connections of the member.
 expected_codes:
   The list of HTTP status codes expected in response from the member to
   declare it healthy
@@ -397,7 +397,7 @@ max_retries:
   Number of permissible connection failures before changing the member
   status to to INACTIVE.
 timeout:
-  Maximum number of seconds for a monitor to wait for a connection to be
+  Maximum number of milliseconds for a monitor to wait for a connection to be
   established before it times out.
 type:
   One of predefined health monitor types.
