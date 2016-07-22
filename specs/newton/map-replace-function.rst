@@ -5,9 +5,9 @@
  http://creativecommons.org/licenses/by/3.0/legalcode
 
 
-=====================
-Support YAQL function
-=====================
+============================
+Support map_replace function
+============================
 
 Include the URL of your launchpad blueprint:
 
