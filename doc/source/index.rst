@@ -41,6 +41,14 @@ Newton
 
    specs/newton/*
 
+Ocata
+------
+.. toctree::
+   :glob:
+   :maxdepth: 1
+
+   specs/ocata/*
+
 heat-specs Repository Information
 =================================
 
