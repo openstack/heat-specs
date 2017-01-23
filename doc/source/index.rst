@@ -49,6 +49,14 @@ Ocata
 
    specs/ocata/*
 
+Pike
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1
+
+   specs/pike/*
+
 heat-specs Repository Information
 =================================
 
