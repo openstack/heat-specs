@@ -57,6 +57,14 @@ Pike
 
    specs/pike/*
 
+Queens
+------
+.. toctree::
+   :glob:
+   :maxdepth: 1
+
+   specs/queens/*
+
 Backlog
 -------
 .. toctree::
