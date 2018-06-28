@@ -65,6 +65,14 @@ Queens
 
    specs/queens/*
 
+Rocky
+------
+.. toctree::
+   :glob:
+   :maxdepth: 1
+
+   specs/rocky/*
+
 Backlog
 -------
 .. toctree::
