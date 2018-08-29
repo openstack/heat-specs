@@ -73,6 +73,8 @@ class TestTitles(testscenarios.WithScenarios, testtools.TestCase):
             msgs.append("Extra sections: %s" % extra_sections)
 
         for section in expect.keys():
+            if section not in actual:
+                continue
             missing_subsections = [x for x in expect[section]
                                    if x not in actual[section]]
             # extra subsections are allowed
