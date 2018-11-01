@@ -4,9 +4,9 @@
 
  http://creativecommons.org/licenses/by/3.0/legalcode
 
-=============================
-Support Neutron Trunk resouce
-=============================
+==============================
+Support Neutron Trunk resource
+==============================
 
 https://blueprints.launchpad.net/heat/+spec/support-trunk-port/
 
