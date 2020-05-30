@@ -29,7 +29,7 @@ extensions = [
 ]
 
 # Feed configuration for yasfb
-feed_base_url = 'http://specs.openstack.org/openstack/heat-specs'
+feed_base_url = 'https://specs.openstack.org/openstack/heat-specs'
 feed_author = 'OpenStack Heat Team'
 
 exclude_patterns = [
@@ -58,6 +58,10 @@ master_doc = 'index'
 project = u'heat-specs'
 copyright = u'%s, OpenStack Foundation' % datetime.date.today().year
 
+# openstackdocstheme options
+openstackdocs_repo_name = 'openstack/heat-specs'
+openstackdocs_use_storyboard = True
+
 # If true, '()' will be appended to :func: etc. cross-reference text.
 add_function_parentheses = True
 
@@ -66,7 +70,7 @@ add_function_parentheses = True
 add_module_names = True
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'native'
 
 # -- Options for HTML output --------------------------------------------------
 
