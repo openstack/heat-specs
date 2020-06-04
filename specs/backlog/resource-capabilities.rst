@@ -275,7 +275,7 @@ For example, given the :ref:`Puppet <capabilities-ex-puppet>` and
 
 Which would return:
 
-.. code-block:: json
+.. code-block::
 
   {
     'deployment': ['puppet', 'docker']
@@ -284,7 +284,7 @@ Which would return:
 A similar version of the call exists if the
 :ref:`capabilities-annotation-type` annotation is used:
 
-.. code-block:: json
+.. code-block::
 
   {
     'OS::TripleO::Controller': ['puppet/controller.yaml',

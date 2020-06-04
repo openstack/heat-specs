@@ -165,7 +165,7 @@ template:
 A default policy rule will be added for this resource to be limited to
 administrators.
 
-.. code-block:: json
+.. code-block::
 
   "resource_types:OS::Neutron::Quota": "rule:project_admin"
 

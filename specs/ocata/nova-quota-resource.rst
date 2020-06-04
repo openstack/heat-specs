@@ -179,7 +179,7 @@ updated. Otherwise, the project's quota will be updated.
 A default policy rule will be added for this resource to be limited to
 administrators.
 
-.. code-block:: json
+.. code-block::
 
   "resource_types:OS::Nova::Quota": "rule:project_admin"
 

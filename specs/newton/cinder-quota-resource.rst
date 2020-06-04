@@ -119,7 +119,7 @@ template:
 We will add a default policy rule for this resource to be limited to
 administrators.
 
-.. code-block:: json
+.. code-block::
 
   "resource_types:OS::Cinder::Quota": "rule:project_admin"
 

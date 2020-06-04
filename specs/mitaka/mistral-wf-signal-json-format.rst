@@ -24,7 +24,7 @@ or even from ceilometer, the signaling request may have a predefined body,
 which is not compatible with the json format expected by the workflow resource.
 The os::mistral::workflow expects the body to be in this format:
 
-.. code-block:: json
+.. code-block::
 
     {
         "input":{
@@ -37,7 +37,7 @@ The os::mistral::workflow expects the body to be in this format:
 
 however, ceilometer, for example, sends this body in the request:
 
-.. code-block:: json
+.. code-block::
 
     {
          "severity": "low",
