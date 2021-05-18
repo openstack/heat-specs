@@ -1,7 +1,16 @@
-heat_specs.egg-info/
-doc/build/
-.tox/
 *.pyc
-.testrepository
+
+# Packages
+*.egg*
+
+# Unit test
+.stestr/
+.tox/
+.venv
+
+# Sphinx
+doc/build/
+
+# pbr generates these
 AUTHORS
 ChangeLog
